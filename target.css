@@ -1,0 +1,82 @@
+/*TO FIX:
+- Form labels should be left aligned within container
+*/
+
+:root {
+    --c1: #ffff00;
+    --c2: #ffff99;
+    --c3: #ffffff;
+    --c4: #99ccff;
+    --c5: #3366ff;
+}
+
+h2, h4 {
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+body {
+    background-color: rgb(231, 229, 229);
+    font-family: Tahoma, sans-serif;
+    text-align: center;
+}
+
+input {
+    border-radius: 5px;
+    background-color: rgb(231, 229, 229);
+}
+
+input[type='number'] {
+    width: 35px;
+}
+
+#formContainer {
+    display: inline-block;
+    text-align: right;
+}
+
+#container {
+    display: inline-block; 
+    border-radius: 10px;
+    background-color: rgb(172, 182, 226);
+    padding: 10px;
+}
+
+#form {
+    text-align: center;
+}
+
+label {
+    text-align: left;
+}
+
+li {
+    list-style: none;
+}
+
+button {
+    cursor: pointer;
+    border: 2px solid;
+    margin: 5px;
+}
+
+#results {
+    display: none;
+    padding-right: 15px; 
+    border-radius: 10px;
+    background: linear-gradient(15deg, var(--c1), var(--c2), var(--c3) 30%, var(--c4), var(--c5));
+    text-align: left;
+}
+
+#times {
+    font-size: small;
+}
+
+#congrats {
+    display: none;
+}
+
+#msg {
+    font-family: "Jersey 15", serif;
+    font-size: 50px;
+}

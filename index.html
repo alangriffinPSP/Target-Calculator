@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+
+</html>
+
+<head>
+    <link rel="stylesheet" href="target.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jersey 15">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="targetCalc.js"></script>
+</head>
+
+<body>
+    <h2>Target Calculator</h2>
+    <div id="container">
+        <div id="formContainer">
+            <form id="inputs">
+                <h4>Please provide figures for the sales period, up until the end of the last full trading week:</h4>
+                <label for="target">Target £</label>
+                <input type="text" id="target" size="8" maxlength="8" autofocus>
+                <br>
+                <label for="actual">Actual Sales £</label>
+                <input type="text" id="actual" size="8" maxlength="8">
+                <br>
+                <label for="weeks">How many weeks are left in the sales period?</label>
+                <input type="number" id="weeks" min="1" max="52" size="2">
+            </form>
+        </div>
+
+        <div id="controls">
+            <button id="calculateButton">Calculate</button>
+            <button id="resetButton">Reset</button>
+        </div>
+
+        <div id="results">
+            <ul>
+                Your current target deficit is:<span id="deficit"> </span><br>
+                <p>To achieve target in <span id="weeksLeft">  X   </span> week(s) you require the following
+                    <strong>extra</strong> takings:</p>
+                <li><span id="targetWeek"></span></li>
+                <li><span id="targetDay"></span></li>
+                <li><span id="targetHour"></span><span id="times"> (Based on 9:00-17:30 Mon-Fri, 10:00-16:00 Sun)</span></li>
+            </ul>
+        </div>
+
+        <div id="congrats">
+            <p><span id="msg">Congratulations!</span> <br>You are achieving your target. Keep it up!</p>
+        </div>
+    </div>
+
+
+
+
+</body>
+
+</html>
