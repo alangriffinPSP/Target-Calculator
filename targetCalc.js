@@ -8,20 +8,19 @@ $(document).ready(function () {
 
     const calculator = {
         calculate() {
-            
-            $inputs = {
-            target: $('#target').val(),
-            actual: $('#actual').val(),
-            weeks: $('#weeks').val()
-            }
 
+            $inputs = {
+                target: $('#target').val(),
+                actual: $('#actual').val(),
+                weeks: $('#weeks').val()
+            }
 
             const deficit = Math.round($inputs.target - $inputs.actual)
             const week = Math.round(deficit / $inputs.weeks)
             const day = Math.round(week / 7)
-            const hour = Math.round(week / 57)    
-                //Based on 9:30-17:30 Mon-Fri & 10:00-16:00 Sunday. Add time options later?
-            
+            const hour = Math.round(week / 57)
+            //Based on 9:30-17:30 Mon-Fri & 10:00-16:00 Sunday. Add time options later?
+
             if (!$inputs.target || !$inputs.weeks || !$inputs.actual) {
                 return;
             }
@@ -49,19 +48,19 @@ $(document).ready(function () {
 
 
     const pageElements = {
-        $clearForm() {
+        clearForm() {
             $('#inputs').trigger('reset');
             $('#calculateButton').css('display', 'inline');
             $('#congrats').css('display', 'none');
             $('#results').css('display', 'none');
         },
 
-        $resetClickListener() {
+        resetClickListener() {
             $('#resetButton').click(this.$clearForm);
         }
     }
-    pageElements.$resetClickListener();
+    pageElements.resetClickListener();
 
-    pageElements.$clearForm();
+    pageElements.clearForm();
     //Document end
 });
