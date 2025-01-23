@@ -68,6 +68,11 @@ button {
     text-align: left;
 }
 
+#warning {
+    display: inline-block;
+    color: red;
+}
+
 #times {
     font-size: small;
 }
