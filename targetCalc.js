@@ -18,8 +18,9 @@ $(document).ready(function () {
             const deficit = Math.round($inputs.target - $inputs.actual)
             const week = Math.round(deficit / $inputs.weeks)
             const day = Math.round(week / 7)
-            const hour = Math.round(week / 57)
-            //Based on 9:30-17:30 Mon-Fri & 10:00-16:00 Sunday. Add time options later?
+            const hour = Math.round(week / 57) ////Based on 9:30-17:30 Mon-Fri & 10:00-16:00 Sunday. Add time options later?
+            const percentage =  $inputs.actual / $inputs.target * 100; //Calculation incorrect
+            
 
             if (!$inputs.target || !$inputs.weeks || !$inputs.actual) {
                 return;
@@ -29,6 +30,7 @@ $(document).ready(function () {
                 $('#calculateButton').css('display', 'none');
                 $('#results').css('display', 'inline-block');
                 $('#deficit').text(` £${deficit} `);
+                // $('#percentage').text(`(-${percentage}%)`);
                 $('#weeksLeft').text(` ${$inputs.weeks} `);
                 $('#targetWeek').text(`£${week} Per Week`);
                 $('#targetDay').text(`£${day} Per Day`);
@@ -56,7 +58,7 @@ $(document).ready(function () {
         },
 
         resetClickListener() {
-            $('#resetButton').click(this.$clearForm);
+            $('#resetButton').click(this.clearForm);
         }
     }
     pageElements.resetClickListener();
