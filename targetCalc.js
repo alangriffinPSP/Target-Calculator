@@ -42,10 +42,12 @@ $(document).ready(function () {
                 $('#targetWeek').text(`£${week.toLocaleString()} Per Week`);
                 $('#targetDay').text(`£${day.toLocaleString()} Per Day`);
                 $('#targetHour').text(`£${hour.toLocaleString()} Per Hour`);
+                $('#warning').hide()
                 // console.log($inputs, deficit, week, day, hour, percentageDifference);
             } else {
                 $('#congrats').show();
                 $('#calculateButton').hide();
+                $('#warning').hide()
             }
         },
 
@@ -111,6 +113,6 @@ $(document).ready(function () {
     pageElements.resetClickListener();
     pageElements.checkTimes();
     pageElements.clearForm();
-    
+
     //Document end
 });
