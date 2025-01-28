@@ -1,13 +1,13 @@
-/*TO FIX:
-- Form labels should be left aligned within container
-*/
-
 :root {
-    --c1: #ffff00;
-    --c2: #ffff99;
-    --c3: #ffffff;
-    --c4: #99ccff;
-    --c5: #3366ff;
+    --c1: #c4d1f8;
+    --c2: #92acf8;
+    --c3: #6489f7;
+    --c4: #3264fc;
+    --c5: #0341fa;
+}
+
+h2 {
+    color:rgb(175, 176, 177);
 }
 
 h2, h4 {
@@ -16,14 +16,14 @@ h2, h4 {
 }
 
 body {
-    background-color: rgb(231, 229, 229);
+    background-color: rgb(56, 55, 55);
     font-family: Tahoma, sans-serif;
     text-align: center;
 }
 
 input {
     border-radius: 5px;
-    background-color: rgb(231, 229, 229);
+    background-color: rgb(224, 222, 222);
 }
 
 input[type='number'] {
@@ -38,7 +38,7 @@ input[type='number'] {
 #container {
     display: inline-block; 
     border-radius: 10px;
-    background-color: rgb(172, 182, 226);
+    background-color: rgb(175, 176, 177);
     padding: 10px;
 }
 
@@ -60,21 +60,25 @@ button {
     margin: 5px;
 }
 
+#timeSelect {
+    display: none;
+}
+
+#opening {
+    font-size: small;
+}
+
 #results {
     display: none;
     padding-right: 15px; 
     border-radius: 10px;
-    background: linear-gradient(15deg, var(--c1), var(--c2), var(--c3) 30%, var(--c4), var(--c5));
+    background: linear-gradient(15deg, var(--c1), var(--c2), var(--c3), var(--c4), var(--c5));
     text-align: left;
 }
 
 #warning {
     display: inline-block;
     color: red;
-}
-
-#times {
-    font-size: small;
 }
 
 #congrats {

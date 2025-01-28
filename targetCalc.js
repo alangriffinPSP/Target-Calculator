@@ -1,6 +1,5 @@
 //TO DO:
 //"Do you know your sales deficit?" option. Hide inputs if unnecessary
-//Add time options for differing opening hours
 
 $(document).ready(function () {
 
@@ -24,11 +23,18 @@ $(document).ready(function () {
             const deficit = Math.round(parseInt($inputs.target) - parseInt($inputs.actual))
             const week = Math.round(deficit / parseInt($inputs.weeks))
             const day = Math.round(week / 7)
-            const hour = Math.round(week / 57) //Based on 9:30-17:30 Mon-Fri & 10:00-16:00 Sunday. Add time options later?
+            let hour;
+            if ($("input[name=openingTimes]:checked").val() == 1) {
+                hour = Math.round(week / 57)
+            } else {
+                hour = (week / calculator.hourCalculation()).toFixed(2);
+                console.log(hour);
+            }
             const percentageDifference = 100 - (($inputs.actual / $inputs.target) * 100);
 
             if (deficit > 0) {
-                $('#calculateButton').css('display', 'none');
+                $('#calculateButton').hide();
+                // $('#calculateButton').css('display', 'none');
                 $('#results').css('display', 'inline-block');
                 $('#deficit').text(` £${deficit.toLocaleString()} `);
                 $('#percentage').text(`(${percentageDifference.toFixed(1)}%)`);
@@ -36,27 +42,66 @@ $(document).ready(function () {
                 $('#targetWeek').text(`£${week.toLocaleString()} Per Week`);
                 $('#targetDay').text(`£${day.toLocaleString()} Per Day`);
                 $('#targetHour').text(`£${hour.toLocaleString()} Per Hour`);
-                console.log($inputs, deficit, week, day, hour, percentageDifference);
+                // console.log($inputs, deficit, week, day, hour, percentageDifference);
             } else {
-                $('#congrats').css('display', 'inline-block');
-                $('#calculateButton').css('display', 'none');
+                $('#congrats').show();
+                $('#calculateButton').hide();
             }
         },
 
+        hourCalculation() {
+            //grabs inputs - MAKE OBJECT
+            $timeInputs = {
+            monSatStart: $("select[name='weekOpen']").val(),
+            monSatEnd: $("select[name='weekClose']").val(),
+            sunStart: $("select[name='sunOpen']").val(),
+            sunEnd: $("select[name='sunClose']").val()
+            }
+
+            timeConvert = {
+            weekStart: new Date("01/01/2025 " + $timeInputs.monSatStart),
+            weekEnd: new Date("01/01/2025 " + $timeInputs.monSatEnd),
+            sundayStart: new Date("01/01/2025 " + $timeInputs.sunStart),
+            sundayEnd: new Date("01/01/2025 " + $timeInputs.sunEnd)
+            }
+
+            //calculates differences (ms to hours)
+            hours = {
+            weekHours: (((timeConvert.weekEnd - timeConvert.weekStart) / 60000) / 60) * 6,
+            sunHours: ((timeConvert.sundayEnd - timeConvert.sundayStart) / 60000) / 60
+            }
+
+            const weeklyTotal = hours.weekHours + hours.sunHours;
+
+            return weeklyTotal;
+        },
+
         calculateClickListener() {
-            $('#calculateButton').click(this.calculate)
+            $('#calculateButton').click(this.calculate);
         }
     }
     calculator.calculateClickListener();
 
 
     const pageElements = {
+
         clearForm() {
             $('#inputs').trigger('reset');
-            $('#calculateButton').css('display', 'inline');
-            $('#congrats').css('display', 'none');
-            $('#results').css('display', 'none');
-            $('#warning').css('display', 'none');
+            $('#calculateButton').show();
+            $('#congrats').hide();
+            $('#results').hide();
+            $('#warning').hide();
+            $('#timeSelect').hide();
+        },
+
+        checkTimes() {
+            $('input[type=radio][name=openingTimes]').change(function () {
+                if ($("input[name=openingTimes]:checked").val() == 0) {
+                    $('#timeSelect').show('fast');
+                } else {
+                    $('#timeSelect').hide('fast');
+                }
+            })
         },
 
         resetClickListener() {
@@ -64,7 +109,8 @@ $(document).ready(function () {
         }
     }
     pageElements.resetClickListener();
-
+    pageElements.checkTimes();
     pageElements.clearForm();
+    
     //Document end
 });

@@ -26,7 +26,51 @@
                 <br>
                 <label for="weeks">How many weeks are left in the sales period?</label>
                 <input type="number" id="weeks" min="1" max="52" size="2">
+                <br>
+                <legend for="opening">Are your opening hours 9-5:30 Mon-Sat, 10-4 Sun?</legend>
+                <span id="opening">Yes<input type="radio" name="openingTimes" value=1 checked="checked">No<input type="radio" name="openingTimes" value=0></span>
             </form>
+                <br>
+                <div id="timeSelect">
+                <label>Monday-Saturday</label>
+                <select name="weekOpen">
+                    <option value="7:00:00">7:00am</option>
+                    <option value="7:30:00">7:30am</option>
+                    <option value="8:00:00">8:00am</option>
+                    <option value="8:30:00">8:30am</option>
+                    <option selected="selected" value="9:00:00">9:00am</option>
+                    <option value="9:30:00">9:30am</option>
+                    <option value="10:00:00">10:00am</option>
+                    <option value="10:30:00">10:30am</option>
+                </select> -
+                <select name="weekClose">
+                    <option value="17:00:00">5:00pm</option>
+                    <option selected="selected" value="17:30:00">5:30pm</option>
+                    <option value="18:00:00">6:00pm</option>
+                    <option value="18:30:00">6:30pm</option>
+                    <option value="19:00:00">7:00pm</option>
+                    <option value="19:30:00">7:30pm</option>
+                    <option value="20:00:00">8:00pm</option>
+                </select>
+            <br>
+            <label>Sunday</label>
+                <select name="sunOpen">
+                    <option value="9:00:00">9:00am</option>
+                    <option value="9:30:00">9:30am</option>
+                    <option selected="selected" value="10:00:00">10:00am</option>
+                    <option value="10:30:00">10:30am</option>
+                    <option value="11:00:00">11:00am</option>
+                </select> -
+                <select name="sunClose">
+                    <option value="15:00:00">3:00pm</option>
+                    <option value="15:30:00">3:30pm</option>
+                    <option selected="selected" value="16:00:00">4:00pm</option>
+                    <option value="16:30:00">4:30pm</option>
+                    <option value="17:00:00">5:00pm</option>
+                    <option value="17:30:00">5:30pm</option>
+                    <option value="18:00:00">6:00pm</option>
+                </select>
+                </div>
         </div>
 
         <div id="controls">
@@ -42,8 +86,7 @@
                 </p>
                 <li><span id="targetWeek"></span></li>
                 <li><span id="targetDay"></span></li>
-                <li><span id="targetHour"></span><span id="times"> (Based on 9:00-17:30 Mon-Fri, 10:00-16:00 Sun)</span>
-                </li>
+                <li><span id="targetHour"></span></li>
             </ul>
         </div>
 
