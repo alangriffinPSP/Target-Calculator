@@ -5,3 +5,7 @@ This simple calculator takes a store's sales performance for a chosen period, co
 ### Update 23/01/25
 Added percentage calculation.
 Implemented regex to allow only numerical inputs to text fields.
+
+### Update 28/01/25
+Added feature to change opening times to adjust hourly target output.
+Changed colour theme. 
