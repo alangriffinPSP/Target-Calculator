@@ -1,6 +1,8 @@
 //TO DO:
 //"Do you know your sales deficit?" option. Hide inputs if unnecessary
 
+//- character misplaced on percentage
+
 $(document).ready(function () {
 
     const calculator = {
@@ -34,10 +36,11 @@ $(document).ready(function () {
 
             if (deficit > 0) {
                 $('#calculateButton').hide();
-                // $('#calculateButton').css('display', 'none');
                 $('#results').css('display', 'inline-block');
                 $('#deficit').text(` £${deficit.toLocaleString()} `);
-                $('#percentage').text(`(${percentageDifference.toFixed(1)}%)`);
+                $('#percentage').text(`(-${percentageDifference.toFixed(1)}%)`);
+                console.log(percentageDifference);
+                
                 $('#weeksLeft').text(` ${$inputs.weeks} `);
                 $('#targetWeek').text(`£${week.toLocaleString()} Per Week`);
                 $('#targetDay').text(`£${day.toLocaleString()} Per Day`);
@@ -52,7 +55,7 @@ $(document).ready(function () {
         },
 
         hourCalculation() {
-            //grabs inputs - MAKE OBJECT
+            
             $timeInputs = {
             monSatStart: $("select[name='weekOpen']").val(),
             monSatEnd: $("select[name='weekClose']").val(),
