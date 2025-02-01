@@ -9,3 +9,6 @@ Implemented regex to allow only numerical inputs to text fields.
 ### Update 28/01/25
 Added feature to change opening times to adjust hourly target output.
 Changed colour theme. 
+
+### Update 31/01/25
+Refactored 'results' as an object using getters. 

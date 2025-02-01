@@ -17,17 +17,25 @@ $(document).ready(function () {
                 return;
             }
 
+            //now using getters to maintain 'results' object
             results = {
-            deficit: Math.round(parseInt($inputs.target) - parseInt($inputs.actual)),
-            week: Math.round(results.deficit / parseInt($inputs.weeks)),
-            day: Math.round(results.week / 7),
-            hour: 0
+                get deficit(){ 
+                return Math.round(parseInt($inputs.target) - parseInt($inputs.actual));
+                },  
+                get week(){ 
+                return Math.round(results.deficit / parseInt($inputs.weeks));
+                },
+                get day(){
+                return Math.round(results.week / 7);
+                },
+                hour: 0,
             }
 
+            //determines if hours calculation is required
             if ($("input[name=openingTimes]:checked").val() == 1) {
                 results.hour = Math.round(results.week / 57)
             } else {
-                results.hour = (week / calculator.hourCalculation()).toFixed(2);
+                results.hour = (results.week / calculator.hourCalculation()).toFixed(2);
             }
             const percentageDifference = 100 - (($inputs.actual / $inputs.target) * 100);
 
